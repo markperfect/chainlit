@@ -131,6 +131,7 @@ describe('Data Layer', () => {
     it('Verifies thread continuation after server restart and new thread creation', () => {
       cy.task('restartChainlit', Cypress.spec).then(() => {
         cy.visit('/');
+        cy.wait(TIMEOUTS.MEDIUM);
 
         login();
         cy.wait(TIMEOUTS.MEDIUM);
@@ -139,6 +140,7 @@ describe('Data Layer', () => {
       });
 
       cy.task('restartChainlit', Cypress.spec).then(() => {
+        cy.wait(TIMEOUTS.MEDIUM);
         verifyContinueThread();
         startNewThread();
         cy.wait(TIMEOUTS.MEDIUM);
